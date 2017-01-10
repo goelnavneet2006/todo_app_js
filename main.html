@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link href="./libs/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./libs/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="./main.css" rel="stylesheet">
+  </head>
+
+  <body class="container-fluid">
+  
+    <h2>TODO App (No data validation)</h2>
+  
+    <div id="todoRows"></div>
+    <form id="addNewTodoRow" class="row show-grid">
+      <span id="clearTodo" class="col-xs-1 col-md-1 col-lg-1 glyphicon glyphicon-minus" aria-hidden="true"> Clear</span>
+      <input placeholder="Title" type="text" id="title" class="form-control col-xs-2 col-md-2 col-lg-2"/>
+      <input placeholder="Summary" type="text" id="summary" class="form-control col-xs-2 col-md-2 col-lg-2"/>
+      <select id="status" class="form-control col-xs-2 col-md-2 col-lg-2">
+        <option selected value="Due">Due (default)</option>
+        <option value="Done">Done</option>
+      </select>
+      <input placeholder="Due date (dd/mm/yyyy)" type="text" id="dueDate" class="form-control col-xs-2 col-md-2 col-lg-2"/>
+      <span id="addTodo" class="col-xs-1 col-md-1 col-lg-1 glyphicon glyphicon-plus" aria-hidden="true"> Add</span>
+    </form>
+
+    <script src="./libs/jquery-2.1.3.min.js"></script>
+    <script src="./libs/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+    <script src="./libs/handlebars-v3.0.0.js"></script>
+    <script id="todoRowTemplate" type="text/x-handlebars-template">
+    <div id="{{uniqueId}}" class="row show-grid" draggable="true">
+      <div class="col-xs-1 col-md-1 col-lg-1 {{#if doneTodoFlag}}bg-success{{/if}}">{{uniqueId}}</div>
+      <div class="col-xs-2 col-md-2 col-lg-2 {{#if doneTodoFlag}}bg-success{{/if}}">{{title}}</div>
+      <div class="col-xs-2 col-md-2 col-lg-2 {{#if doneTodoFlag}}bg-success{{/if}}">{{summary}}</div>
+      <div class="col-xs-2 col-md-2 col-lg-2 {{#if doneTodoFlag}}bg-success{{/if}}">{{status}}</div>
+      <div class="col-xs-2 col-md-2 col-lg-2 {{#if doneTodoFlag}}bg-success{{/if}}">{{dueDate}}</div>
+      <div class="col-xs-1 col-md-1 col-lg-1 {{#if doneTodoFlag}}bg-success{{/if}}">
+        <span id="deleteTodo" class="glyphicon glyphicon-remove" aria-hidden="true"> Remove</span>
+      </div>
+      
+    </div>
+    </script>
+    <script src="./main.js"></script>
+    
+
+  </body>
+
+</html>
+
